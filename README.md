@@ -18,3 +18,7 @@ You can also import the code straight into your IDE:
 Spring Tool Suite (STS)
 
 IntelliJ IDEA
+
+##Instructions
+
+Download and unzip the source repository for this guide, or clone it using Git:
