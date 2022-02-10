@@ -5,7 +5,7 @@ target/
 !**/src/test/**/target/
 .DS_Store
 .mvn/
-mvnw
+/mvnw
 mvnw.cmd
 
 
