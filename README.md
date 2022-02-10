@@ -22,3 +22,7 @@ You can also import the code straight into your IDE:
 ## Instructions:
 
 Download and unzip the source repository for this guide, or clone it using Git:
+
+
+## Test the Service
+To check the service is up visit http://localhost:8080/healthz, where you should see: "Hello 200".
