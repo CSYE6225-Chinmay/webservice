@@ -1,28 +1,22 @@
-# Building a RESTful Web Service
+### Simple Node.js REST API with MySQL.
 
-Built a service that will accept a HTTP GET request at http://localhost:8080/healthz.
+- Ensure you have [Node.js](https://nodejs.org/en/) installed on your computer.
+- Ensure you have MySQL installed and running on port 3306
 
-Responds with a message "Hello 200".
+- Install the dependencies by running the following from the root of your project:
 
-What You Need
-* About 15 minutes
+```bash
+npm install
+```
 
-* A favorite text editor or IDE
+- Run the app
 
-* JDK 1.8 or later
+```bash
+npm start
+```
 
-* Maven 3.2+
+- Test the app
 
-You can also import the code straight into your IDE:
-
-* Spring Tool Suite (STS)
-
-* IntelliJ IDEA
-
-## Instructions:
-
-Download and unzip the source repository for this guide, or clone it using Git:
-
-
-## Test the Service
-To check the service is up visit http://localhost:8080/healthz, where you should see: "Hello 200".
+```bash
+npm test
+```
