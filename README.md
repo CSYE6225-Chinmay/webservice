@@ -1,3 +1,4 @@
+
 # A02
 
 CSYE 6225 Assignment 2 Stage.
@@ -14,3 +15,4 @@ Steps:
 Test:
 1. npm test
 2. The server is running on localhost:4000
+
