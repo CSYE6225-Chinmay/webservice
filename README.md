@@ -1,18 +1,22 @@
+### Simple Node.js REST API with MySQL.
 
-# A02
+- Ensure you have [Node.js](https://nodejs.org/en/) installed on your computer.
+- Ensure you have MySQL installed and running on port 3306
 
-CSYE 6225 Assignment 2 Stage.
+- Install the dependencies by running the following from the root of your project:
 
-Steps:
+```bash
+npm install
+```
 
-1. Clone the repository using git clone
-2. npm install
-3. brew install mysql
-4. mysql.server start
-5. Node server.js or npm start
+- Run the app
 
+```bash
+npm start
+```
 
-Test:
-1. npm test
-2. The server is running on localhost:4000
+- Test the app
 
+```bash
+npm test
+```
