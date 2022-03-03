@@ -5,6 +5,9 @@ name: Node.js CI
 
 env:
  CI: true
+ AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+ AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+ ssh_username: "ec2-user"
 
 on:
   push:
@@ -23,6 +26,15 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
+    - name: Setting up Hashicorp Packer
+      uses: hashicorp-contrib/setup-packer@v1
+      with: 
+        packer-version: 1.7.10
+        
+    - uses: actions/checkout@v2
+    - name: run packer-version
+      run: packer build ami.json
+    
     
     - name: Start MySQL
     # You may pin to the exact commit or the version.
