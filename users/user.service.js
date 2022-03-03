@@ -2,9 +2,11 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const db = require('../_helpers/db');
+const auth = require('basic-auth');
 
 module.exports = {
     authenticate,
+    basicauth,
     getAll,
     getById,
     create,
@@ -25,6 +27,18 @@ async function authenticate({ username, password }) {
 
 async function getAll() {
     return await db.User.findAll();
+
+}
+
+async function basicauth (req, res) {
+    const x = auth(req);
+    const uname = x.name;
+    const user = await db.User.scope('withHash').findOne({ where: { username : uname } });
+    if (!user || !(await bcrypt.compare(x.pass, user.hash)))
+        return res.sendStatus(400);
+    else {
+        return { ...omitHash(user.get())};
+    }
 }
 
 async function getById(id) {
@@ -44,14 +58,41 @@ async function create(params) {
         params.hash = await bcrypt.hash(params.password, salt);
     }
 
+
     // save user
     await db.User.create(params);
+    const user = await db.User.scope('withHash').findOne({ where: { username: params.username } });
+    return { ...omitHash(user.get())};
 }
 
-async function update(id, params) {
-    const user = await getUser(id);
+async function update(req, res) {
+    const x = auth(req);
+    const uname = x.name;
+    const user = await db.User.scope('withHash').findOne({ where: { username : uname } });
+    console.log("1")
+    if (!user || !(await bcrypt.compare(x.pass, user.hash)))
+        return res.sendStatus(400);
+    else {
+        const usernameChanged = req.body.username && user.username !== req.body.username;
+        if (usernameChanged && await db.User.findOne({ where: { username: req.body.username } })) {
+            throw 'Username "' + req.body.username + '" is already taken';
+        }
+        console.log("2")
+        // hash password if it was entered
+        if (req.body.password) {
+            req.body.hash = await bcrypt.hash(req.body.password, 10);
+        }
+        console.log("3")
+        // copy params to user and save
+        Object.assign(user, req.body);
+        await user.save();
+        console.log("4")
+        return res.sendStatus(204);
+    }
 
-    // validate
+    //const user = await getUser(id);
+
+    /* validate
     const usernameChanged = params.username && user.username !== params.username;
     if (usernameChanged && await db.User.findOne({ where: { username: params.username } })) {
         throw 'Username "' + params.username + '" is already taken';
@@ -66,7 +107,7 @@ async function update(id, params) {
     Object.assign(user, params);
     await user.save();
 
-    return omitHash(user.get());
+    return omitHash(user.get());*/
 }
 
 async function _delete(id) {

@@ -1,15 +1,10 @@
 {
-    "name": "node-mysql-registration-login-api",
+    "name": "",
     "version": "1.0.0",
-    "description": "Node.js + MySQL API for User Management, Authentication and Registration",
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/cornflourblue/node-mysql-registration-login-api.git"
-    },
     "scripts": {
         "start": "node ./server.js",
         "start:dev": "nodemon ./server.js",
+        "build": "node build/build.js",
         "test": "jest --detectOpenHandles"
     },
     "dependencies": {
@@ -24,7 +19,8 @@
         "rootpath": "^0.1.2",
         "sequelize": "^6.3.4",
         "jest": "^27.3.1",
-        "supertest": "^1.0.0"
+        "supertest": "^1.0.0",
+        "basic-auth": "^2.0.1"
     },
     "devDependencies": {
         "nodemon": "^2.0.4"
