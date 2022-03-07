@@ -1,16 +1,22 @@
-# A04
+# Webservice
 
-CSYE 6225 Assignment 4 Stage.
+# CSYE6225 - Chinmay A04
 
-Steps:
+Pre-requisites:
+- Install Node.js 
 
-1. Clone the repository using git clone
-2. npm install
-3. brew install mysql
-4. mysql.server start
-5. Node server.js or npm start
+Getting Started:
+- Clone the repository
+    - git clone
 
+- Install Dependencies
+    - npm install
+
+- Build and run the project
+    - npm start
 
 Test:
-1. npm test
-2. The server is running on localhost
+
+- Run test
+    - npm run test
+  
