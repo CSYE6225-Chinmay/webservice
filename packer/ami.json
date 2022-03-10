@@ -7,7 +7,7 @@
         "source_ami": "ami-0c293f3f676ec4f90",
         "ssh_username": "ec2-user"
     },
-    "builders: [
+    "builders": [
     {
         "type": "amazon-ebs",
         "profile": "dev",
