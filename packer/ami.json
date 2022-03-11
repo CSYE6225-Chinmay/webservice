@@ -8,33 +8,35 @@
         "ssh_username": "ec2-user"
     },
     "builders": [
-    {
-        "type": "amazon-ebs",
-        "profile": "dev",
-        "access_key": "{{user `AWS_ACCESS_KEY`}}",
-        "secret_key": "{{user `AWS_SECRET_KEY`}}",
-        "region": "{{user `aws_region`}}",
-        "instance_type": "t2.micro",
-        "subnet_id": "{{user `subnet_id`}}",
-        "source_ami": "{{user `source_ami`}}",
-        "ssh_username": "{{user `ssh_username`}}",
-        "ami_name": "csye6225_{{timestamp}}",
-        "ami_description": "Linux 2 AMI for csye6225",
-        "ami_users": ["934689230493"],
-        "ami_block_device_mappings": [
-            {
-                "delete_on_termination": true,
-                "device_name": "/dev/xvda",
-                "volume_size": 60,
-                "volume_type": "gp2"
+        {
+            "type": "amazon-ebs",
+            "profile": "dev",
+            "access_key": "{{user `AWS_ACCESS_KEY`}}",
+            "secret_key": "{{user `AWS_SECRET_KEY`}}",
+            "region": "{{user `aws_region`}}",
+            "instance_type": "t2.micro",
+            "subnet_id": "{{user `subnet_id`}}",
+            "source_ami": "{{user `source_ami`}}",
+            "ssh_username": "{{user `ssh_username`}}",
+            "ami_name": "csye6225_{{timestamp}}",
+            "ami_description": "Linux 2 AMI for csye6225",
+            "ami_users": [
+                "934689230493"
+            ],
+            "ami_block_device_mappings": [
+                {
+                    "delete_on_termination": true,
+                    "device_name": "/dev/xvda",
+                    "volume_size": 60,
+                    "volume_type": "gp2"
+                }
+            ],
+            "tags": {
+                "Tool": "Packer",
+                "Author": "user",
+                "Environment": "dev"
             }
-        ],
-        "tags": {
-            "Tool": "Packer",
-            "Author": "user",
-            "Environment": "dev"
         }
-    }
     ],
     "provisioners": [
         {
@@ -65,15 +67,8 @@
         },
         {
             "type": "shell",
-            "inline" : [
-                "sudo yum -y install https://dev.mysql.com/get/mysql80-community-release-el7-5.noarch.rpm",
-                    "echo 'Install community server'",
-                    "sudo yum -y install mysql-community-server",
-                    "sudo systemctl enable --now mysqld",
-                    "systemctl status mysqld",
-                    "passwords=$(sudo grep 'temporary password' /var/log/mysqld.log | awk {'print $13'})",
-                    "mysql --connect-expired-password -u root -p$passwords -e \"ALTER USER 'root'@'localhost' IDENTIFIED BY 'Qwerty@2021';\"",
-                    "mysql -u root -pQwerty@2021 -e \"create database usersDB;\""
+            "inline": [
+                "sleep 20"
             ]
         }
     ]
