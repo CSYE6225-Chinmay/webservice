@@ -1,23 +1,28 @@
-# Webservice
+# webservice
+CSYE6225 Workspace
 
-# CSYE6225 - Chinmay A04
+# Assignment-4
 
 Pre-requisites:
 - Install Node.js 
 
 Getting Started:
 - Clone the repository
-    - git clone
 
 - Install Dependencies
+    - cd webservice
     - npm install
+
 
 - Build and run the project
     - npm start
 
-Test:
+Testing:
+- The test case is written using Mocha and Supertest -
 
-- Run test
+    - "mocha": "^9.2.0",
+    - "supertest": "^6.2.2"
+
+- Running tests using NPM Scripts
     - npm run test
-  
   
