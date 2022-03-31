@@ -1,7 +1,7 @@
 # webservice
 CSYE6225 Workspace
 
-# Assignment-5
+# Assignment-7
 
 Pre-requisites:
 - Install Node.js 
@@ -16,7 +16,6 @@ Getting Started:
 
 - Build and run the project
     - npm start
-
 
 Testing:
 - The test case is written using Mocha and Supertest -
