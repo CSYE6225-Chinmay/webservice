@@ -89,7 +89,7 @@ build {
   }
 
   provisioner "shell" {
-    script = "provisioners.sh"
+    script = "./packer/provisioners.sh"
   }
 
 }
