@@ -42,7 +42,7 @@ variable "ssh_username" {
 
 variable "subnet_id" {
   type    = string
-  default = "subnet-06aa189b0e9d7ec2a"
+  default = "subnet-0dd570b84e3113750"
 }
 
 variable "GITHUB_PATH" {
