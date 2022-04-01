@@ -7,4 +7,3 @@ CSYE6225 Workspace
 - Clone the repository
 - npm install
 - npm start
-- 
