@@ -28,17 +28,6 @@ sudo ./install auto
 sudo service codedeploy-agent status
 sudo service codedeploy-agent start
 sudo service codedeploy-agent status
-sleep 10
-
-#install cloud watch agent
-sudo yum install amazon-cloudwatch-agent -y 
-
-#start cloudwatch agent
-sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
--a fetch-config \
--m ec2 \
--c file:/home/ec2-user/webservice/statsd/config.json \
--s
 
 ls
 cd /tmp/
@@ -49,13 +38,5 @@ cd /home/ec2-user/
 unzip -q webservice.zip
 ls -ltr
 chown ec2-user:ec2-user /home/ec2-user/webservice
-cd webservice
-sudo rm -rf webapp.service 
+cd webservice 
 ls -ltr 
-
-sudo npm i
-sleep 30
-sudo pm2 start index.js
-sudo pm2 save
-sudo pm2 startup systemd
-sudo pm2 restart all --update-env
